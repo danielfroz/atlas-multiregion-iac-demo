@@ -1,10 +1,8 @@
 # Introduction
 
-This repo is a simple IaC example of an Azure multi-region application using MongoDB Atlas deployed with 2 shards and multi-region support.
+This repo is a simple IaC example of an Azure multi-region application using MongoDB Atlas deployed multiregion support (RS).
 
-In a real deployment you may want to have separated repos covering different resources group.
-
-We're assuming that you have familiarity with Atlas and Azure.
+If you're feeling brave, go ahead and execute the scripts... have fun!
 
 # Prerequisites
 
@@ -12,19 +10,20 @@ We're assuming that you have familiarity with Atlas and Azure.
 
 You shall create the Atlas Account and a dedicated Organization for this Demo. 
 Since we're going to provision multiple resources, the API Key must have the 'Organization Owner' privilege.
-Once you're done with this deno, the destroy action, will also delete the organization! So be extra careful with that.
+Once you're done with this deno, the destroy actions is your friend.
+Keep in mind that it will also delete your Atlas organization! Again, create one organization for this exercise - don't use it on production environments!!!!
 
 ### Organization Id
 
-Copy the Organization Id and add it to the `./iac/main.tf` file (see import {} section).
+Copy the Organization Id and add it to the `iac/main.tf` file (see import {} section).
 
-In order to obtain the Organization Id, go to Organization Settings, you can see the organization id from the URL (cloud.mongodb.org/v2#/org/&gt;ORGANIZATION_ID&lt;/...)
+In order to obtain the Organization Id, go to Organization Settings, you can see the organization id from the URL (cloud.mongodb.org/v2#/org/&lt;ORGANIZATION_ID&gt;/...)
 
 Copy it and save it!
 
 ### API Key
 
-Generate an API Key at the organization level.
+Generate the API Key at the organization level.
 
 Click on `Access Manager`, and then `Applications`, then `API Keys`. Generate the API Key with `Organization Owner` privilege.
 
@@ -34,11 +33,10 @@ Note: Use API Access List feature to restrict access to the Atlas Control Plane 
 
 ## Azure
 
-We are utilizing the Azure Service Principal for this terraform demo. 
+We are utilizing the Azure Service Principal as auth method on this Demo.
 Follow the doc available at Terraform's Azurerm Provider ([Creating a Service Principal](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/service_principal_client_secret))
 
-Just in case, here are the commands that you may need to execute:
-
+Here are the commands that you need to execute:
 ```shell
 az login
 az account list
@@ -52,7 +50,7 @@ Copy the output and save it!
 
 Make sure you create the `iac/env.sh` script file.
 
-Here is the example of the file for reference (replace values with the responses from the commands above):
+Here is the example of the file (replace values with the responses from the previous commands):
 
 ```shell
 #!/bin/sh
@@ -68,6 +66,7 @@ export MONGODB_ATLAS_PRIVATE_KEY=YOUR_PRIVATE_KEY
 # Provisioning the Resources
 
 Use terraform and execute the scripts from the `iac` directory.
+
 Execute the scripts below:
 - `sh ./plan.sh`
 - `sh ./apply.sh`
@@ -82,7 +81,7 @@ It will work with `account` database, `contract` collection.
 Copy the source code to the VMs you have provisioned. Use the VMs public IP address. 
 Also remember that we created a `azureuser` with the password defined on the `iac/main.ft` file.
 
-To use it, make sure you create the .env file under the application's root folder. 
+To use it, make sure you create the `.env` file under the application's folder (use: `/app`). 
 
 Here is the example of .env file:
 ```shell
@@ -97,3 +96,5 @@ There are two options for running the application: Docker compose or deno run di
 # Done with testing
 
 Execute the `sh ./destroy.sh`.
+
+AGAIN! THIS WILL DELETE YOUR ORGANIZATION AND ALL RESOURCES CREATED.
