@@ -1,0 +1,11 @@
+.DS_Store
+.env
+.env.sh
+.env.local
+SECRETS.md
+*.hcl
+*.plan
+*.tfstate
+*.tfstate.backup
+.claude
+.terraform

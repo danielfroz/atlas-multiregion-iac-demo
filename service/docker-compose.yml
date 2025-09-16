@@ -1,0 +1,9 @@
+services:
+  demo:
+    build:
+      context: .
+    container_name: demo
+    ports:
+      - 3000:3000
+    environment:
+      - MONGODB_URL=${MONGODB_URL}

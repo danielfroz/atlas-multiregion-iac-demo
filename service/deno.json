@@ -1,0 +1,9 @@
+{
+  "imports": {
+    "@/": "./src/",
+    "@danielfroz/slog": "jsr:@danielfroz/slog@^0.2.3",
+    "mongodb": "npm:mongodb@6.19.0",
+    "oak": "jsr:@oak/oak@17.1.6",
+    "faker": "npm:@faker-js/faker@10.0.0"
+  }
+}
