@@ -99,8 +99,11 @@ contract.post('/contract/:tid', async (ctx) => {
   if(!doc.created) {
     doc.created = new Date(date)
   }
+  else {
+    doc.created = new Date(doc.created)
+  }
   if(!doc.year) {
-    doc.year = ''+date.getFullYear()
+    doc.year = ''+doc.created.getFullYear()
   }
   if(doc.active == null) {
     doc.active = false
