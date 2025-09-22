@@ -10,7 +10,13 @@ const client = new MongoClient(url, {
     w: 'majority',
     journal: true
   },
-  readPreference: 'nearest'
+  readPreference: 'nearest',
+  serverSelectionTimeoutMS: 3000,
+  socketTimeoutMS: 45000,
+  minPoolSize: 5,
+  maxPoolSize: 100,
+  maxIdleTimeMS: 30000,
+  waitQueueTimeoutMS: 2500,
 })
 
 const db = client.db('account')
