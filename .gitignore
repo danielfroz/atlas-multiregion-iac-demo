@@ -7,5 +7,6 @@ SECRETS.md
 *.plan
 *.tfstate
 *.tfstate.backup
+*.tfstate.lock.info
 .claude
 .terraform
