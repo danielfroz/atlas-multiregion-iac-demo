@@ -8,6 +8,12 @@ resource "azurerm_virtual_network" "vnet" {
   }
 }
 
+resource "azurerm_network_watcher" "vnetwatcher" {
+  name = "${var.env}-${var.location}-vnetwatcher"
+  location = var.location
+  resource_group_name = var.resource_group
+}
+
 resource "azurerm_subnet" "subnet" {
   name = "${var.env}-${var.location}-subnet"
   resource_group_name = var.resource_group

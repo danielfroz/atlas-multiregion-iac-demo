@@ -10,7 +10,7 @@ If you're feeling brave, go ahead and execute the scripts... have fun!
 
 You shall create the Atlas Account and a dedicated Organization for this Demo. 
 Since we're going to provision multiple resources, the API Key must have the 'Organization Owner' privilege.
-Once you're done with this deno, the destroy actions is your friend.
+Once you're done with this demo, you can destroy it using the `cd iac && sh ./destroy.sh` script.
 Keep in mind that it will also delete your Atlas organization! Again, create one organization for this exercise - don't use it on production environments!!!!
 
 ### Organization Id
@@ -92,6 +92,10 @@ There are two options for running the application: Docker compose or deno run di
 
 - Deno: use the `sh ./dev.sh` script.
 - Docker compose: execute the `docker compose build && docker compose up -d` command.
+
+## Online Archive Private Endpoint
+
+For detailed notes, please refer to the [README.md](./iac/README.md) inside the iac directory.
 
 # Done with testing
 

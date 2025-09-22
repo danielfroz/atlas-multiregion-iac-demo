@@ -136,7 +136,7 @@ module "mongodb-cluster" {
   source = "./modules/mdbatlas"
   project_id = mongodbatlas_project.project.id
   env = local.env
-  enable_online_archive = false
+  enable_online_archive = true
   region_configs = [
     {
       provider_name = "AZURE"
@@ -182,21 +182,6 @@ module "mongodb-cluster" {
   ]
 }
 
-module "eastus-vm" {
-  source = "./modules/vm"
-  env = local.env
-  location = azurerm_resource_group.eastus.location
-  resource_group_name = azurerm_resource_group.eastus.name
-  subnet_id = module.eastus-net.subnet_id
-  vm_name = "${local.env}-eastus-vm"
-  vm_size = "Standard_B1s"
-  admin_username = "azureuser"
-  admin_password = "ChangeMe123!"
-  tags = {
-    environment = local.env
-    region = azurerm_resource_group.eastus.location
-  }
-}
 module "eastus2-vm" {
   source = "./modules/vm"
   env = local.env
@@ -212,6 +197,23 @@ module "eastus2-vm" {
     region = azurerm_resource_group.eastus2.location
   }
 }
+
+module "eastus-vm" {
+  source = "./modules/vm"
+  env = local.env
+  location = azurerm_resource_group.eastus.location
+  resource_group_name = azurerm_resource_group.eastus.name
+  subnet_id = module.eastus-net.subnet_id
+  vm_name = "${local.env}-eastus-vm"
+  vm_size = "Standard_B1s"
+  admin_username = "azureuser"
+  admin_password = "ChangeMe123!"
+  tags = {
+    environment = local.env
+    region = azurerm_resource_group.eastus.location
+  }
+}
+
 module "westus-vm" {
   source = "./modules/vm"
   env = local.env
