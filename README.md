@@ -81,7 +81,7 @@ It will work with `account` database, `contract` collection.
 Copy the source code to the VMs you have provisioned. Use the VMs public IP address. 
 Also remember that we created a `azureuser` with the password defined on the `iac/main.ft` file.
 
-To use it, make sure you create the `.env` file under the application's folder (use: `/app`). 
+To use it, make sure you create the `.env` file under the application's folder (path: `/app/.env`). 
 
 Here is the example of .env file:
 ```shell
