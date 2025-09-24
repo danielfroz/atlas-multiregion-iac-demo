@@ -17,14 +17,14 @@ Here are the steps:
 8. Execute the command below to create the private endpoint:
 
 ```shell
-az network private-endpoint create --connection-name connection-1 --name prd-eastus2-oa --private-connection-resource-id /subscriptions/fc1c1583-9972-4c1c-a62e-3424ef64e84a/resourceGroups/pl-lb-prod-adl-pl-prod/providers/Microsoft.Network/privateLinkServices/pl-adl-pl-prod-eastus2-cloud-0-0 --resource-group prd-eastus2-rg --subnet /subscriptions/6d2c4ac9-db45-4ede-8cf3-74a131a68683/resourceGroups/prd-eastus2-rg/providers/Microsoft.Network/virtualNetworks/prd-eastus2-vnet/subnets/prd-eastus2-subnet --vnet-name prd-eastus2-vnet --location eastus2 --query "{privateEndpointId:id, networkInterfaceId:networkInterfaces[0].id}" --manual-request true
+az network private-endpoint create --connection-name connection-1 --name prd-eastus2-oa --private-connection-resource-id /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pl-lb-prod-adl-pl-prod/providers/Microsoft.Network/privateLinkServices/pl-adl-pl-prod-eastus2-cloud-0-0 --resource-group prd-eastus2-rg --subnet /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/prd-eastus2-rg/providers/Microsoft.Network/virtualNetworks/prd-eastus2-vnet/subnets/prd-eastus2-subnet --vnet-name prd-eastus2-vnet --location eastus2 --query "{privateEndpointId:id, networkInterfaceId:networkInterfaces[0].id}" --manual-request true
 ```
 
 As output, we have the following response:
 ```shell
 {
-  "networkInterfaceId": "/subscriptions/6d2c4ac9-db45-4ede-8cf3-74a131a68683/resourceGroups/prd-eastus2-rg/providers/Microsoft.Network/networkInterfaces/prd-eastus2-oa.nic.2455026c-f121-4a99-b560-5c54bf657057",
-  "privateEndpointId": "/subscriptions/6d2c4ac9-db45-4ede-8cf3-74a131a68683/resourceGroups/prd-eastus2-rg/providers/Microsoft.Network/privateEndpoints/prd-eastus2-oa"
+  "networkInterfaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/prd-eastus2-rg/providers/Microsoft.Network/networkInterfaces/prd-eastus2-oa.nic.2455026c-f121-4a99-b560-5c54bf657057",
+  "privateEndpointId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/prd-eastus2-rg/providers/Microsoft.Network/privateEndpoints/prd-eastus2-oa"
 }
 ```
 
