@@ -119,7 +119,7 @@ resource "mongodbatlas_organization" "imported" {
 # In Access Manager, Projects, you will see the Org Id from the URL (https://cloud.mongodb.com/v2#/org/ORG_ID/projects)
 #
 import {
-  id = "68c969b162ca9b48e74b1f6a"
+  id = "68d353b4312ac1308626fe82"
   to = mongodbatlas_organization.imported
 }
 
