@@ -1,6 +1,6 @@
 # Introduction
 
-This repository is a simple Infrastructure as Code (IaC) example of an Azure multi-region application using MongoDB Atlas with multi-region support (Replica Set).
+This repository is a simple Infrastructure as Code (IaC) example of an Azure multi-region application  and MongoDB Atlas (Replica Set).
 
 If you're feeling brave, go ahead and execute the scripts... have fun!
 
@@ -10,17 +10,20 @@ If you're feeling brave, go ahead and execute the scripts... have fun!
 
 You must create an Atlas Account and a dedicated Organization for this demo.
 Since we're going to provision multiple resources, the API Key must have the 'Organization Owner' privilege.
+
 Once you're done with this demo, you can destroy it using the `cd iac && sh ./destroy.sh` script.
-Keep in mind that it will also delete your Atlas organization! 
-Again, create one organization for this exercise - don't use it in production environments!
+
+***
+IMPORTANT: The destroy operation will also delete your Atlas organization! 
+Extremely important that you create one organization for this exercise - DON'T RE-USE THE EXISTING!
+***
 
 ### Organization ID
 
-Copy the Organization ID and add it to the `iac/main.tf` file (see import {} section).
+Copy the Organization ID and add it to the `iac/main.tf` file (see `import {}` section within the file).
 
-To obtain the Organization ID, go to Organization Settings. 
-You can see the organization ID from the URL: https://cloud.mongodb.org/v2#/org/&lt;ORGANIZATION_ID&gt;/...
-Copy it and save it!
+To obtain the Organization ID, go to Organization Settings.
+Then you can copy it from the URL: `https://cloud.mongodb.org/v2#/org/<ORGANIZATION_ID>/[url continues...]`
 
 ### API Key
 
@@ -98,10 +101,12 @@ There are two options for running the application: Docker Compose or Deno run di
 
 ## Online Archive Private Endpoint
 
+This code base also has the ability to provision a Online Archive.
+For that you shall change the `iac/main.tf`, `mongodb-cluster` module, `enabling_online_archive = true`
 For detailed notes on OA Private Endpoint creation, please refer to the [README.md](./iac/README.md) inside the `iac` directory.
 
 # Done with testing
 
 Execute the `sh ./destroy.sh`.
 
-AGAIN! THIS WILL DELETE YOUR ORGANIZATION AND ALL RESOURCES CREATED.
+***CAREFUL! THIS WILL DELETE YOUR ORGANIZATION AND ALL RESOURCES CREATED.***

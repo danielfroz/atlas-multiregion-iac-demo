@@ -136,7 +136,7 @@ module "mongodb-cluster" {
   source = "./modules/mdbatlas"
   project_id = mongodbatlas_project.project.id
   env = local.env
-  enable_online_archive = true
+  enable_online_archive = false
   region_configs = [
     {
       provider_name = "AZURE"
